@@ -1,0 +1,33 @@
+<%- include("./partials/header.ejs") %>
+<div>
+  <% if (todo.length > 0) {%>
+  <div class="content">
+    <% todo.forEach(blog => { %>
+    <div class="tasks">
+      <div class="title-task">
+        <%= blog.title %>
+         <a class="delete" data-doc="<%= blog._id %>">delete</a>
+        <ul>
+          <p class="body"><%= blog.body %></p>
+        </ul>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% } else { %>
+  <p>There are no blogs to display...</p>
+  <% } %>
+</div>
+
+<script>
+      const trashcan = document.querySelector('a.delete');
+      trashcan.addEventListener('click', (e) => {
+      const endpoint = `/all-task/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+</script>

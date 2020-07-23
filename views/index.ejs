@@ -1,0 +1,17 @@
+<%- include("./partials/header.ejs") %>
+<body class="ce">
+    <form action="/response" method="POST">
+        <div class="row">
+            <label for=""  class="title"><h4>Title</h4></label>
+            <input class="form-control" type="text" name="title" class="text">   
+        </div>
+        <div class="row">
+            <label for=""><h4>Body</h4></label>
+            <textarea class="form-control" name="body"  rows="4" cols="50"></textarea>
+        </div>
+        <div class="row buttonStyle">
+            <button class="btn btn-primary btn-lg btn-block">Submit</button>
+        </div>
+    </form>
+    
+</body>
